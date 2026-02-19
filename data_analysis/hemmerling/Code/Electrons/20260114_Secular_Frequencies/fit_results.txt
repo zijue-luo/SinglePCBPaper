@@ -1,0 +1,231 @@
+20260107_174740 - U2: -0.28 - RF Power: 2.5 dBm
+   center:    43.91, width:    1.380, amplitude:    0.014
+   center:    44.03, width:    0.289, amplitude:    0.038
+*********************************************************
+20260107_175216 - U2: -0.28 - RF Power: 2.5 dBm
+   center:    52.47, width:    2.463, amplitude:    0.022
+   center:    53.61, width:    1.325, amplitude:    0.045
+*********************************************************
+20260107_180137 - U2: -0.28 - RF Power: 2.5 dBm
+   center:    87.79, width:    0.687, amplitude:    0.024
+   center:    85.92, width:    1.564, amplitude:    0.020
+*********************************************************
+20260107_181203 - U2: -0.28 - RF Power: 2.5 dBm
+   center:    99.51, width:    1.278, amplitude:    0.044
+   center:    99.92, width:    0.387, amplitude:    0.029
+*********************************************************
+20260107_181704 - U2: -0.28 - RF Power: 2.5 dBm
+   center:    99.86, width:    0.890, amplitude:    0.058
+*********************************************************
+20260107_182743 - U2: -0.28 - RF Power: 2.5 dBm
+   center:   108.31, width:    0.906, amplitude:    0.013
+   center:   106.15, width:    0.888, amplitude:    0.009
+*********************************************************
+20251224_144819 - U2: -0.25 - RF Power: 2.5 dBm
+   center:    41.45, width:    0.334, amplitude:    0.047
+*********************************************************
+20251224_145254 - U2: -0.25 - RF Power: 2.5 dBm
+   center:    61.80, width:    0.669, amplitude:    0.011
+   center:    62.43, width:    0.342, amplitude:    0.026
+*********************************************************
+20251224_150102 - U2: -0.25 - RF Power: 2.5 dBm
+   center:    82.05, width:    1.601, amplitude:    0.007
+   center:    82.82, width:    0.537, amplitude:    0.014
+*********************************************************
+20251224_150934 - U2: -0.25 - RF Power: 2.5 dBm
+   center:   103.01, width:    0.718, amplitude:    0.024
+   center:   103.79, width:    0.325, amplitude:    0.013
+*********************************************************
+20251224_175711 - U2: -0.3 - RF Power: 2.5 dBm
+   center:    53.89, width:    1.561, amplitude:    0.043
+*********************************************************
+20251224_180919 - U2: -0.3 - RF Power: 2.5 dBm
+   center:    84.96, width:    0.670, amplitude:    0.021
+   center:    83.57, width:    1.227, amplitude:    0.019
+*********************************************************
+20251224_181339 - U2: -0.3 - RF Power: 2.5 dBm
+   center:   102.03, width:    0.566, amplitude:    0.053
+*********************************************************
+20251223_142531 - U2: -0.18 - RF Power: 2.5 dBm
+   center:    34.25, width:    0.261, amplitude:    0.033
+   center:    34.43, width:    1.537, amplitude:    0.019
+*********************************************************
+20251223_143329 - U2: -0.18 - RF Power: 2.5 dBm
+   center:    59.10, width:    4.068, amplitude:    0.025
+   center:    61.22, width:    1.188, amplitude:    0.039
+   center:    67.79, width:    0.958, amplitude:    0.013
+*********************************************************
+20251223_144635 - U2: -0.18 - RF Power: 2.5 dBm
+   center:    83.56, width:    0.552, amplitude:    0.014
+   center:    83.57, width:    0.190, amplitude:    0.017
+*********************************************************
+20251223_145237 - U2: -0.18 - RF Power: 2.5 dBm
+   center:    95.30, width:    2.039, amplitude:    0.014
+   center:    97.50, width:    1.019, amplitude:    0.021
+   center:   100.95, width:    0.748, amplitude:    0.008
+*********************************************************
+20251223_150033 - U2: -0.18 - RF Power: 2.5 dBm
+   center:   109.90, width:    1.470, amplitude:    0.001
+*********************************************************
+20251223_150438 - U2: -0.18 - RF Power: 2.5 dBm
+   center:   120.63, width:    0.303, amplitude:    0.009
+   center:   123.11, width:    0.238, amplitude:    0.003
+*********************************************************
+20251223_192919 - U2: -0.21 - RF Power: 2.5 dBm
+   center:    37.57, width:    0.982, amplitude:    0.027
+*********************************************************
+20251223_193638 - U2: -0.21 - RF Power: 2.5 dBm
+   center:    59.17, width:    3.247, amplitude:    0.025
+   center:    61.39, width:    0.776, amplitude:    0.040
+*********************************************************
+20251223_194955 - U2: -0.21 - RF Power: 2.5 dBm
+   center:    82.53, width:    0.334, amplitude:    0.025
+*********************************************************
+20251223_195354 - U2: -0.21 - RF Power: 2.5 dBm
+   center:   100.44, width:    1.254, amplitude:    0.029
+   center:   101.68, width:    0.368, amplitude:    0.029
+*********************************************************
+20251223_200839 - U2: -0.21 - RF Power: 2.5 dBm
+   center:   142.17, width:    0.942, amplitude:    0.008
+   center:   143.88, width:    0.400, amplitude:    0.016
+   center:   145.56, width:    0.589, amplitude:    0.007
+*********************************************************
+20251222_142532 - U2: -0.12 - RF Power: 2.5 dBm
+   center:    23.03, width:    1.706, amplitude:    0.033
+   center:    23.25, width:    0.147, amplitude:    0.025
+*********************************************************
+20251222_143229 - U2: -0.12 - RF Power: 2.5 dBm
+   center:    64.83, width:    4.508, amplitude:    0.024
+   center:    66.48, width:    0.882, amplitude:    0.022
+   center:    69.07, width:    0.613, amplitude:    0.012
+*********************************************************
+20251222_145548 - U2: -0.12 - RF Power: 2.5 dBm
+   center:    89.82, width:    1.223, amplitude:    0.020
+   center:    90.26, width:    0.210, amplitude:    0.013
+   center:    91.91, width:    0.223, amplitude:    0.005
+*********************************************************
+20251222_150242 - U2: -0.12 - RF Power: 2.5 dBm
+   center:   107.00, width:    1.117, amplitude:    0.004
+*********************************************************
+20251222_151117 - U2: -0.12 - RF Power: 2.5 dBm
+   center:   115.38, width:    0.692, amplitude:    0.014
+*********************************************************
+20251222_185258 - U2: -0.15 - RF Power: 2.5 dBm
+   center:    30.74, width:    1.428, amplitude:    0.023
+   center:    31.89, width:    0.261, amplitude:    0.061
+*********************************************************
+20251222_190012 - U2: -0.15 - RF Power: 2.5 dBm
+   center:    62.08, width:    1.928, amplitude:    0.040
+   center:    64.04, width:    0.743, amplitude:    0.046
+*********************************************************
+20251222_191539 - U2: -0.15 - RF Power: 2.5 dBm
+   center:    84.06, width:    0.536, amplitude:    0.014
+   center:    84.76, width:    0.235, amplitude:    0.018
+*********************************************************
+20251222_192232 - U2: -0.15 - RF Power: 2.5 dBm
+   center:    95.64, width:    1.353, amplitude:    0.017
+   center:    97.03, width:    0.523, amplitude:    0.039
+*********************************************************
+20251222_193035 - U2: -0.15 - RF Power: 2.5 dBm
+   center:   129.25, width:    0.776, amplitude:    0.010
+*********************************************************
+20251219_152324 - U2: -0.06 - RF Power: 2.5 dBm
+   center:     9.35, width:    0.250, amplitude:    0.012
+   center:    13.72, width:    0.642, amplitude:    0.047
+   center:    14.11, width:    0.252, amplitude:    0.062
+*********************************************************
+20251219_152848 - U2: -0.06 - RF Power: 2.5 dBm
+   center:    26.68, width:    1.447, amplitude:    0.022
+   center:    28.25, width:    0.528, amplitude:    0.048
+*********************************************************
+20251219_153648 - U2: -0.06 - RF Power: 2.5 dBm
+   center:    57.91, width:    2.672, amplitude:    0.020
+   center:    65.80, width:    1.183, amplitude:    0.067
+   center:    69.12, width:    1.010, amplitude:    0.032
+   center:    73.07, width:    2.078, amplitude:    0.076
+   center:    78.46, width:    0.595, amplitude:    0.021
+   center:    82.19, width:    2.536, amplitude:    0.033
+   center:    87.69, width:    1.373, amplitude:    0.072
+   center:    93.95, width:    2.068, amplitude:    0.039
+   center:    98.51, width:    0.965, amplitude:    0.035
+   center:   101.29, width:    1.369, amplitude:    0.064
+   center:   112.88, width:    2.759, amplitude:    0.012
+*********************************************************
+20251219_174546 - U2: -0.09 - RF Power: 2.5 dBm
+   center:    14.93, width:    1.140, amplitude:    0.045
+   center:    15.06, width:    0.293, amplitude:    0.058
+*********************************************************
+20251219_175228 - U2: -0.09 - RF Power: 2.5 dBm
+   center:    30.11, width:    2.491, amplitude:    0.018
+   center:    30.10, width:    0.576, amplitude:    0.052
+*********************************************************
+20251219_175909 - U2: -0.09 - RF Power: 2.5 dBm
+   center:    45.47, width:    0.890, amplitude:    0.024
+*********************************************************
+20251219_180433 - U2: -0.09 - RF Power: 2.5 dBm
+   center:    61.99, width:    3.995, amplitude:    0.053
+   center:    55.93, width:    0.140, amplitude:    0.000
+   center:    75.30, width:    3.539, amplitude:    0.071
+   center:    77.25, width:    0.752, amplitude:    0.022
+   center:    80.94, width:    1.330, amplitude:    0.034
+   center:    89.42, width:    1.459, amplitude:    0.036
+   center:    92.84, width:    2.203, amplitude:    0.066
+   center:   105.37, width:    1.598, amplitude:    0.048
+   center:   108.68, width:    0.931, amplitude:    0.044
+   center:   120.34, width:    0.963, amplitude:    0.017
+   center:   123.82, width:    1.049, amplitude:    0.018
+*********************************************************
+20251218_145950 - U2: 0.0 - RF Power: 2.5 dBm
+   center:     9.24, width:    0.948, amplitude:    0.007
+   center:     9.21, width:    0.165, amplitude:    0.007
+*********************************************************
+20251218_150250 - U2: 0.0 - RF Power: 2.5 dBm
+   center:    15.64, width:    1.667, amplitude:    0.018
+*********************************************************
+20251218_150947 - U2: 0.0 - RF Power: 2.5 dBm
+   center:    64.33, width:    1.559, amplitude:    0.025
+   center:    68.76, width:    0.874, amplitude:    0.015
+   center:    72.83, width:    1.209, amplitude:    0.036
+   center:    77.72, width:    0.527, amplitude:    0.032
+   center:    79.24, width:    0.593, amplitude:    0.029
+   center:    82.13, width:    0.845, amplitude:    0.022
+   center:    86.45, width:    0.606, amplitude:    0.022
+   center:    88.30, width:    0.749, amplitude:    0.017
+   center:    92.99, width:    2.591, amplitude:    0.029
+   center:    95.87, width:    0.739, amplitude:    0.023
+   center:   100.90, width:    0.200, amplitude:    0.006
+*********************************************************
+20251218_174138 - U2: -0.03 - RF Power: 2.5 dBm
+   center:    12.21, width:    0.395, amplitude:    0.081
+*********************************************************
+20251218_174818 - U2: -0.03 - RF Power: 2.5 dBm
+   center:    24.97, width:    0.401, amplitude:    0.024
+   center:    23.95, width:    0.240, amplitude:    0.029
+*********************************************************
+20251218_175457 - U2: -0.03 - RF Power: 2.5 dBm
+   center:    54.54, width:    3.205, amplitude:    0.013
+   center:    67.02, width:    2.149, amplitude:    0.023
+   center:    73.51, width:    0.715, amplitude:    0.014
+   center:    77.91, width:    2.390, amplitude:    0.018
+   center:    79.32, width:    0.761, amplitude:    0.013
+   center:    86.54, width:    0.468, amplitude:    0.013
+   center:    90.26, width:    2.205, amplitude:    0.019
+   center:    98.66, width:    0.341, amplitude:    0.005
+   center:    99.65, width:    3.183, amplitude:    0.004
+   center:   110.22, width:    0.182, amplitude:    0.007
+   center:   111.94, width:    1.768, amplitude:    0.003
+*********************************************************
+20251217_165722 - U2: 0.03 - RF Power: 11.6 dBm
+   center:     9.32, width:    0.744, amplitude:    0.007
+   center:    16.67, width:    3.167, amplitude:    0.008
+   center:    17.96, width:    1.007, amplitude:    0.003
+*********************************************************
+20251217_171011 - U2: 0.03 - RF Power: 11.6 dBm
+   center:    61.38, width:    3.233, amplitude:    0.017
+   center:    69.29, width:    2.065, amplitude:    0.033
+   center:    77.54, width:    1.659, amplitude:    0.030
+   center:    85.17, width:    3.061, amplitude:    0.028
+   center:    89.61, width:    0.430, amplitude:    0.005
+   center:    93.81, width:    2.175, amplitude:    0.021
+   center:    97.88, width:    5.069, amplitude:    0.015
+*********************************************************

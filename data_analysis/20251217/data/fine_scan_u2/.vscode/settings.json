@@ -1,0 +1,14 @@
+{
+  "python-envs.defaultEnvManager": "ms-python.python:conda",
+  "python-envs.defaultPackageManager": "ms-python.python:conda",
+  "python-envs.pythonProjects": [],
+  "python.defaultInterpreterPath": "C:\\Users\\lluoz\\anaconda3\\python.exe",
+  "python.terminal.activateEnvironment": false,
+  "terminal.integrated.defaultProfile.windows": "PowerShell (base)",
+  "terminal.integrated.profiles.windows": {
+    "PowerShell (base)": {
+      "source": "PowerShell",
+      "args": ["-NoExit", "-Command", "conda activate base"]
+    }
+  }
+}

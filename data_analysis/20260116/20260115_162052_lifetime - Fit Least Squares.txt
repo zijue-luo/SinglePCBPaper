@@ -1,0 +1,84 @@
+﻿
+
+
+Response tau_ms
+Weight: weight
+
+
+Actual by Predicted Plot
+
+
+
+Effect Summary
+
+Source	Logworth	                      	PValue	
+Ey*Ey	17.211	+++++++++++++++++++   	0.00000	
+Ex	10.434	+++++++++++           	0.00000	
+Ex*Ex	9.307	++++++++++            	0.00000	
+Ey	9.290	++++++++++            	0.00000	^
+Ez*Ez	6.106	+++++++               	0.00000	
+Ez	2.433	+++                   	0.00369	^
+run_id	1.616	++                    	0.02421	
+Ex*Ez	0.951	+                     	0.11201	
+Ex*Ey	0.738	+                     	0.18284	
+Ey*Ez	0.304	                      	0.49616	
+
+
+
+
+
+
+Residual by Predicted Plot
+
+
+
+Studentized Residuals
+
+Externally studentized residuals with 95% simultaneous limits (Bonferroni) in red, individual limits in green.
+
+
+
+
+Parameter Estimates
+
+Term	Estimate	Std Error	t Ratio	Prob>|t|
+Intercept	0.7936152	0.02246	35.33	<.0001
+Ex	0.8885373	0.094058	9.45	<.0001
+(Ex+0.20695)*(Ex+0.20695)	 -17.79825	2.093303	 -8.50	<.0001
+Ey	0.6946244	0.081832	8.49	<.0001
+(Ey+0.0023)*(Ey+0.0023)	 -29.52976	1.809376	 -16.32	<.0001
+Ez	0.2533529	0.081417	3.11	0.0037
+(Ez-0.02127)*(Ez-0.02127)	 -9.184806	1.531977	 -6.00	<.0001
+(Ex+0.20695)*(Ey+0.0023)	 -3.078508	2.26526	 -1.36	0.1828
+(Ex+0.20695)*(Ez-0.02127)	3.0911138	1.896083	1.63	0.1120
+(Ey+0.0023)*(Ez-0.02127)	1.2783736	1.858834	0.69	0.4962
+run_id	0.0007528	0.00032	2.36	0.0242
+
+
+
+
+Effect Tests
+
+Source	Nparm	DF	Sum of Squares	F Ratio	Prob > F
+Ex	   1	1	13.999800	89.2394	<.0001
+Ex*Ex	   1	1	11.341115	72.2921	<.0001
+Ey	   1	1	11.303790	72.0541	<.0001
+Ey*Ey	   1	1	41.785675	266.3558	<.0001
+Ez	   1	1	1.519089	9.6832	0.0037
+Ez*Ez	   1	1	5.638979	35.9447	<.0001
+Ex*Ey	   1	1	0.289741	1.8469	0.1828
+Ex*Ez	   1	1	0.416947	2.6578	0.1120
+Ey*Ez	   1	1	0.074199	0.4730	0.4962
+run_id	   1	1	0.870730	5.5503	0.0242
+
+
+
+
+
+
+
+
+
+Prediction Profiler
+
+

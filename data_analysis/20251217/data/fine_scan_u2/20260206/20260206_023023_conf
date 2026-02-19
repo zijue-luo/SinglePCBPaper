@@ -1,0 +1,245 @@
+[Scan]
+filename = /home/electrons/software/data/20260206/20260206_023023
+
+[mode]
+val = Trapping
+
+[histogram_on]
+val = True
+
+[bin_width]
+val = 1.0
+unit = us
+
+[histogram_refresh]
+val = 20000
+unit = 
+
+[mesh_voltage]
+val = 120
+unit = V
+
+[MCP_front]
+val = 400
+unit = V
+
+[threshold_voltage]
+val = 60
+unit = mV
+
+[load_time]
+val = 210
+unit = us
+
+[wait_time]
+val = 90
+unit = us
+
+[no_of_repeats]
+val = 20000
+unit = 
+
+[detection_time]
+val = 1000
+unit = ms for counting mode only
+
+[wait_times_path]
+val = /home/electrons/software/Electrons_Artiq_Sequences/artiq-master/repository/helper_functions/Table/
+
+[wait_times_file]
+val = lifetime_wait_times_short.csv
+
+[repeats_ratio]
+val = 1.0
+unit = 
+
+[wait_time_fast]
+val = 700
+unit = us
+
+[frequency_422]
+val = 709.0767199999999
+unit = THz
+
+[frequency_390]
+val = 768.708843
+unit = THz
+
+[laser_failure]
+val = raise error
+
+[RF_on]
+val = True
+
+[RF_amp_mode]
+val = setpoint
+
+[RF_amplitude]
+val = 2.5
+unit = dBm
+
+[RF_frequency]
+val = 1.732
+unit = GHz
+
+[ext_pulse_length]
+val = 900
+unit = ns
+
+[ext_pulse_level]
+val = 15.0
+unit = V
+
+[U1]
+val = 0.0
+unit = V
+
+[U2]
+val = -0.225
+unit = V
+
+[U3]
+val = 0.0
+unit = V
+
+[U4]
+val = 0.0
+unit = V
+
+[U5]
+val = 0.0
+unit = V
+
+[Ex]
+val = -0.2
+unit = V
+
+[Ey]
+val = 0.05
+unit = V
+
+[Ez]
+val = 0.03
+unit = V
+
+[tickle_on]
+val = True
+
+[tickle_level]
+val = -10.0
+unit = dBm
+
+[tickle_frequency]
+val = 64.0
+unit = MHz
+
+[tickle_pulse_length]
+val = 80.0
+unit = us
+
+[offset_tl1]
+val = 0.0
+unit = V
+
+[offset_tl2]
+val = 0.0
+unit = V
+
+[offset_tl3]
+val = 0.0
+unit = V
+
+[offset_tl4]
+val = 0.0
+unit = V
+
+[offset_tl5]
+val = 0.0
+unit = V
+
+[offset_tr1]
+val = 0.0
+unit = V
+
+[offset_tr2]
+val = 0.0
+unit = V
+
+[offset_tr3]
+val = 0.0
+unit = V
+
+[offset_tr4]
+val = 0.0
+unit = V
+
+[offset_tr5]
+val = 0.0
+unit = V
+
+[offset_bl1]
+val = 0.0
+unit = V
+
+[offset_bl2]
+val = 0.0
+unit = V
+
+[offset_bl3]
+val = 0.0
+unit = V
+
+[offset_bl4]
+val = 0.0
+unit = V
+
+[offset_bl5]
+val = 0.0
+unit = V
+
+[offset_br1]
+val = 0.0
+unit = V
+
+[offset_br2]
+val = 0.0
+unit = V
+
+[offset_br3]
+val = 0.0
+unit = V
+
+[offset_br4]
+val = 0.0
+unit = V
+
+[offset_br5]
+val = 0.0
+unit = V
+
+[scanning_parameter]
+val = tickle_frequency
+
+[min_scan]
+val = 93.0
+unit = 
+
+[max_scan]
+val = 155.0
+unit = 
+
+[steps]
+val = 249
+unit = steps to scan
+
+[sequence_file]
+val = /home/electrons/software/Electrons_Artiq_Sequences/artiq-master/repository/Modular/single_parameter_scan.py
+cmt = Filename of the main sequence file
+
+[errors]
+val = [(50, 'LaserError', 422), (109, 'LaserError', 422), (181, 'LaserError', 422), (192, 'LaserError', 422), (212, 'LaserError', 422)]
+
+[Status]
+val = True
+cmt = Run finished.
+

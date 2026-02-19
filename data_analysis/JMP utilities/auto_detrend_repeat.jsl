@@ -1,0 +1,112 @@
+﻿Names Default To Here( 1 );
+dt = Current Data Table();
+
+//===========================
+// 0. Calculate time_accum
+//===========================
+dt << New Column(
+	"time_accum",
+	Numeric,
+	Continuous,
+	Formula( Col Cumulative Sum( :time_cost ) )
+);
+
+//========================================
+// 1. Calculate loading_signal baseline
+//========================================
+Bivariate(
+	Y( :loading_signal ),
+	X( :time_accum ),
+	By( :no_of_repeats ),
+	Fit Line( {Save Predicteds, Line Color( {212, 73, 88} )} )
+);
+Column( "Predicted loading_signal By no_of_repeats" ) <<
+	Set Name( "loading_signal baseline" );
+
+//========================================
+// 2. Calculate trapped_signal baseline
+//========================================
+Bivariate(
+	Y( :trapped_signal ),
+	X( :time_accum ),
+	By( :no_of_repeats ),
+	Fit Line( {Save Predicteds, Line Color( {212, 73, 88} )} )
+);
+Column( "Predicted trapped_signal By no_of_repeats" ) <<
+	Set Name( "trapped_signal baseline" );
+
+//=====================================
+// 3. Calculate lost_signal baseline
+//=====================================
+Bivariate(
+	Y( :lost_signal ),
+	X( :time_accum ),
+	By( :no_of_repeats ),
+	Fit Line( {Save Predicteds, Line Color( {212, 73, 88} )} )
+);
+Column( "Predicted lost_signal By no_of_repeats" ) <<
+	Set Name( "lost_signal baseline" );
+
+//========================================
+// 2. Calculate ratio_signal baseline
+//========================================
+Bivariate(
+	Y( :ratio_signal ),
+	X( :time_accum ),
+	By( :no_of_repeats ),
+	Fit Line( {Save Predicteds, Line Color( {212, 73, 88} )} )
+);
+Column( "Predicted ratio_signal By no_of_repeats" ) <<
+	Set Name( "ratio_signal baseline" );
+
+//=====================================
+// 4. Calculate ratio_lost baseline
+//=====================================
+Bivariate(
+	Y( :ratio_lost ),
+	X( :time_accum ),
+	By( :no_of_repeats ),
+	Fit Line( {Save Predicteds, Line Color( {212, 73, 88} )} )
+);
+Column( "Predicted ratio_lost By no_of_repeats" ) <<
+	Set Name( "ratio_lost baseline" );
+
+//=========================================
+// 5. Calculate trapped_signal detrended
+//=========================================
+dt << New Column(
+	"trapped_signal detrended",
+	Numeric,
+	Continuous,
+	Formula( :trapped_signal / :Name( "trapped_signal baseline" ) )
+);
+
+//======================================
+// 6. Calculate lost_signal detrended
+//======================================
+dt << New Column(
+	"lost_signal detrended",
+	Numeric,
+	Continuous,
+	Formula( :lost_signal / :Name( "lost_signal baseline" ) )
+);
+
+//=========================================
+// 7. Calculate ratio_signal detrended
+//=========================================
+dt << New Column(
+	"ratio_signal detrended",
+	Numeric,
+	Continuous,
+	Formula( :ratio_signal / :Name( "ratio_signal baseline" ) )
+);
+
+//======================================
+// 8. Calculate ratio_lost detrended
+//======================================
+dt << New Column(
+	"ratio_lost detrended",
+	Numeric,
+	Continuous,
+	Formula( :ratio_lost / :Name( "ratio_lost baseline" ) )
+);

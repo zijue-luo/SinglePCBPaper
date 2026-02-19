@@ -1,0 +1,149 @@
+﻿Names Default To Here( 1 );
+dt = Current Data Table();
+
+//=====================
+// 0. Set parameters
+//=====================
+winSize = 15;
+half_k = Floor( winSize / 2 );
+
+//===========================
+// 1. Calculate time_accum
+//===========================
+dt << New Column(
+	"time_accum",
+	Numeric,
+	Continuous,
+	Formula( Col Cumulative Sum( :time_cost ) )
+);
+
+//================================================
+// 2. Convert time_accum from formula to values
+//================================================
+dt << Run Formulas;
+Column( dt, "time_accum" ) << Delete Formula;
+
+//============================================================
+// 3. Sort the table by RF_amplitude first, then time_accum
+//============================================================
+dt = dt << Sort(
+	By( :RF_amplitude, :time_accum ),
+	Order( Ascending, Ascending ),
+	Replace Table
+);
+
+//=============================================
+// 4. Calculate trapped_signal moving median
+//=============================================
+dt << New Column(
+	"trapped_signal moving median",
+	Numeric,
+	Continuous,
+	Formula(
+		Local(
+			{
+				window_size = winSize,
+				half_k = Floor( window_size / 2 ),
+				current_group,
+				start_row,
+				end_row,
+				values_list = {},
+				i
+			},
+			
+			current_group = :RF_amplitude;
+
+			start_row = Max( 1, Row() - half_k );
+			end_row   = Min( N Row(), Row() + half_k );
+
+			values_list = {};
+			For( i = start_row, i <= end_row, i++,
+				If( :RF_amplitude[i] == current_group,
+					Insert Into( values_list, :trapped_signal[i] )
+				)
+			);
+
+			Median( values_list );
+		)
+	)
+);
+
+//==========================================
+// 5. Calculate lost_signal moving median
+//==========================================
+dt << New Column(
+	"lost_signal moving median",
+	Numeric,
+	Continuous,
+	Formula(
+		Local(
+			{
+				window_size = winSize,
+				half_k = Floor( window_size / 2 ),
+				current_group,
+				start_row,
+				end_row,
+				values_list = {},
+				i
+			},
+			
+			current_group = :RF_amplitude;
+
+			start_row = Max( 1, Row() - half_k );
+			end_row   = Min( N Row(), Row() + half_k );
+
+			values_list = {};
+			For( i = start_row, i <= end_row, i++,
+				If( :RF_amplitude[i] == current_group,
+					Insert Into( values_list, :lost_signal[i] )
+				)
+			);
+
+			Median( values_list );
+		)
+	)
+);
+
+//========================================
+// 6. Calculate trapped_signal baseline
+//========================================
+Bivariate(
+	Y( :trapped_signal moving median ),
+	X( :time_accum ),
+	By( :RF_amplitude ),
+	Fit Spline( 10000000, {Save Predicteds, Line Color( {212, 73, 88} )} )
+);
+Column( "Spline Predictor for trapped_signal moving median by RF_amplitude" ) <<
+	Set Name( "trapped_signal baseline" );
+
+//=====================================
+// 7. Calculate lost_signal baseline
+//=====================================
+Bivariate(
+	Y( :lost_signal moving median ),
+	X( :time_accum ),
+	By( :RF_amplitude ),
+	Fit Spline( 10000000, {Save Predicteds, Line Color( {212, 73, 88} )} )
+);
+Column( "Spline Predictor for lost_signal moving median by RF_amplitude" ) <<
+	Set Name( "lost_signal baseline" );
+
+//=========================================
+// 8. Calculate trapped_signal detrended
+//=========================================
+dt << New Column(
+	"trapped_signal detrended",
+	Numeric,
+	Continuous,
+	Formula( :trapped_signal / :Name( "trapped_signal baseline" ) )
+);
+
+//======================================
+// 9. Calculate lost_signal detrended
+//======================================
+dt << New Column(
+	"lost_signal detrended",
+	Numeric,
+	Continuous,
+	Formula( :lost_signal / :Name( "lost_signal baseline" ) )
+);

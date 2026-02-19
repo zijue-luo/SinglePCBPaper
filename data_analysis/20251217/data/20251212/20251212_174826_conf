@@ -1,0 +1,152 @@
+[Scan]
+filename = /home/electrons/software/data/20251212/20251212_174826
+
+[histogram_on]
+val = True
+
+[bin_width]
+val = 1.0
+unit = us
+
+[histogram_refresh]
+val = 4000
+unit = 
+
+[mesh_voltage]
+val = 120
+unit = V
+
+[MCP_front]
+val = 400
+unit = V
+
+[threshold_voltage]
+val = 100
+unit = mV
+
+[wait_time]
+val = 90
+unit = us
+
+[load_time]
+val = 210
+unit = us
+
+[no_of_repeats]
+val = 4000
+unit = 
+
+[detection_time]
+val = 1000
+unit = ms for counting mode only
+
+[frequency_422]
+val = 709.0783
+unit = THz
+
+[frequency_390]
+val = 768.708843
+unit = THz
+
+[RF_on]
+val = True
+
+[RF_amplitude]
+val = 2.6
+unit = dBm
+
+[RF_frequency]
+val = 1.732
+unit = GHz
+
+[ext_pulse_length]
+val = 900
+unit = ns
+
+[ext_pulse_level]
+val = 15.0
+unit = V
+
+[U1]
+val = 0.0
+unit = V
+
+[U2]
+val = -0.2
+unit = V
+
+[U3]
+val = 0.0
+unit = V
+
+[U4]
+val = 0.0
+unit = V
+
+[U5]
+val = 0.0
+unit = V
+
+[optimize_target]
+val = trapped_signal
+
+[max_iteration]
+val = 50
+unit = 
+
+[tolerance]
+val = 0.005
+unit = 
+
+[converge_count]
+val = 3
+unit = 
+
+[min_Ex]
+val = -0.3
+unit = 
+
+[max_Ex]
+val = 0.3
+unit = 
+
+[min_Ey]
+val = 0.0
+unit = 
+
+[max_Ey]
+val = 0.15
+unit = 
+
+[min_Ez]
+val = -0.1
+unit = 
+
+[max_Ez]
+val = 0.2
+unit = 
+
+[min_iteration]
+val = 5
+unit = 
+
+[n_candidate_run]
+val = 1024
+unit = 
+
+[n_candidate_anal]
+val = 4096
+unit = 
+
+[init_sample_size]
+val = 10
+unit = 
+
+[sequence_file]
+val = /home/electrons/software/Electrons_Artiq_Sequences/artiq-master/repository/Modular/find_optimal_E.py
+cmt = Filename of the main sequence file
+
+[Status]
+val = True
+cmt = Run finished.
+

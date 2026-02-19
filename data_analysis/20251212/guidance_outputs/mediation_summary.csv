@@ -1,0 +1,2 @@
+k_loading_per_hr,k_trapped_per_hr_without_loading,k_trapped_per_hr_with_loading,SSE_T0,SSE_Tt,SSE_TL,SSE_TLt,partial_R2_time_in_trapped,partial_R2_loading_in_trapped,partial_R2_time_given_loading,interpretation_hint
+-1031.3808319319794,-247.9807358198478,-38.27373264568946,13511174.08888889,8133680.503330443,1638727.3380271913,1557898.6352495498,0.3980034266585838,0.8787131801243815,0.04932407051617782,"If partial_R2_time_given_loading is small and k_trapped shrinks after adding loading, then trapped time drift is largely mediated by loading."
