@@ -1,1 +1,55 @@
+# ---- Ansys Exported Field Data ----
 *.fld
+*.fldb
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+eggs/
+*.egg-info/
+.eggs/
+
+# ---- Jupyter ----
+.ipynb_checkpoints/
+
+# ---- MATLAB ----
+*.asv
+*.m~
+*.mat
+*.autosave
+
+# ---- macOS ----
+.DS_Store
+__MACOSX/
+
+# ---- Editors / IDE ----
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ---- Archives ----
+*.zip
+
+# ---- Raw data ----
+# data_analysis/**/data_rf/ (Not too large)
+data_analysis/**/image_rf/
+
+# ---- Generated outputs (run scripts to regenerate) ----
+data_analysis/**/final_analysis_plots/
+data_analysis/**/autofit_plots/
+data_analysis/**/plot_repeats_per_RF/
+data_analysis/**/baseline_estimation_plots/
+data_analysis/**/report_*/plots/
+data_analysis/**/report_*/plots_preview/
+data_analysis/**/find_peaks_from_split/plots/
+data_analysis/**/stage2_split_with_repair/*/plots/
+figures/**/results_files/
+*dataMap_cache.mat
+output_log.txt

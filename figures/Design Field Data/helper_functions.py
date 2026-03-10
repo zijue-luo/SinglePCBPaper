@@ -134,58 +134,182 @@ def compute_total_field(design_dir, voltages):
     return X, Y, Z, V
 
 
-def plot_2d_slices(X, Y, Z, V, design_name, title_label, out_path, plot_region):
-    """Plot XY at Z=0 and XZ at Y=0 in control-system coords (perm applied).
-    title_label: e.g. multipole name ('U2') or 'Custom' for arbitrary voltages.
+def plot_2d_cross_sections(X, Y, Z, V, design_name, title_label, out_path, plot_region,
+                           planes=('XY', 'XZ', 'YZ'), offsets=None, axes_in=None):
+    """Plot 2D cross sections at XY, XZ, and/or YZ planes with optional offsets (in mm).
+    planes: tuple of 'XY', 'XZ', 'YZ' to include.
+    offsets: dict {'XY': z_offset_mm, 'XZ': y_offset_mm, 'YZ': x_offset_mm}; missing keys use 0.
+    axes_in: if provided (sequence of matplotlib axes), plot to these and skip create/save.
+    Uses control-system coords (perm applied).
     """
+    if offsets is None:
+        offsets = {}
     x_vals = np.unique(X)
     y_vals = np.unique(Y)
     z_vals = np.unique(Z)
     nx, ny, nz = len(x_vals), len(y_vals), len(z_vals)
     V3 = V.reshape(nx, ny, nz)
-    V3_ctrl = np.transpose(V3, PERM_ANSYS_TO_CTRL)
+    V3_ctrl = np.transpose(V3, PERM_ANSYS_TO_CTRL)  # shape (ctrl_x, ctrl_y, ctrl_z)
     ctrl_x_mm = z_vals * 1e3
     ctrl_y_mm = x_vals * 1e3
     ctrl_z_mm = y_vals * 1e3
-    iy0 = np.argmin(np.abs(y_vals))
-    ix0 = np.argmin(np.abs(x_vals))
-    xlim = (plot_region[0], plot_region[1])
-    ylim = (plot_region[0], plot_region[1])
-    zlim = (plot_region[0], plot_region[1])
 
-    v_xy = V3_ctrl[:, :, iy0]
-    v_xz = V3_ctrl[:, ix0, :]
-    vmin = min(v_xy.min(), v_xz.min())
-    vmax = max(v_xy.max(), v_xz.max())
+    # Index for each plane: XY fixes iz, XZ fixes iy, YZ fixes ix
+    def _idx(arr_mm, offset):
+        return np.argmin(np.abs(arr_mm - offset))
+
+    slices_data = []
+    for plane in planes:
+        off = offsets.get(plane, 0.0)
+        if plane == 'XY':
+            iz = _idx(ctrl_z_mm, off)
+            x_ax, y_ax = ctrl_x_mm, ctrl_y_mm
+            data = V3_ctrl[:, :, iz].T
+            xlab, ylab = 'X (mm)', 'Y (mm)'
+            title = f'{design_name}: XY at Z={ctrl_z_mm[iz]:.3f} mm'
+        elif plane == 'XZ':
+            iy = _idx(ctrl_y_mm, off)
+            x_ax, y_ax = ctrl_x_mm, ctrl_z_mm
+            data = V3_ctrl[:, iy, :].T
+            xlab, ylab = 'X (mm)', 'Z (mm)'
+            title = f'{design_name}: XZ at Y={ctrl_y_mm[iy]:.3f} mm'
+        elif plane == 'YZ':
+            ix = _idx(ctrl_x_mm, off)
+            x_ax, y_ax = ctrl_y_mm, ctrl_z_mm
+            data = V3_ctrl[ix, :, :].T
+            xlab, ylab = 'Y (mm)', 'Z (mm)'
+            title = f'{design_name}: YZ at X={ctrl_x_mm[ix]:.3f} mm'
+        else:
+            continue
+        slices_data.append((x_ax, y_ax, data, xlab, ylab, title))
+
+    if not slices_data:
+        return
+
+    vmin = min(s[2].min() for s in slices_data)
+    vmax = max(s[2].max() for s in slices_data)
     if vmax <= vmin:
         vmin -= 1e-12
         vmax += 1e-12
 
-    fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+    xlim = (plot_region[0], plot_region[1])
+    if axes_in is not None:
+        axes = list(axes_in)
+    else:
+        fig, axes = plt.subplots(1, len(slices_data), figsize=(5 * len(slices_data), 5))
+        if len(slices_data) == 1:
+            axes = [axes]
+    for ax, (x_ax, y_ax, data, xlab, ylab, title) in zip(axes, slices_data):
+        im = ax.pcolormesh(x_ax, y_ax, data, cmap='RdBu_r', shading='auto', vmin=vmin, vmax=vmax)
+        ax.set_xlim(xlim)
+        ax.set_ylim(xlim)
+        ax.set_xlabel(xlab)
+        ax.set_ylabel(ylab)
+        ax.set_title(title)
+        ax.set_aspect('equal')
+        plt.colorbar(im, ax=ax, label='Potential (V)')
 
-    ax = axes[0]
-    im0 = ax.pcolormesh(ctrl_x_mm, ctrl_y_mm, V3_ctrl[:, :, iy0].T,
-                        cmap='RdBu_r', shading='auto', vmin=vmin, vmax=vmax)
-    ax.set_xlim(xlim)
-    ax.set_ylim(ylim)
-    ax.set_xlabel('X (mm)')
-    ax.set_ylabel('Y (mm)')
-    ax.set_title(f'{design_name}: XY slice at Z≈0')
-    ax.set_aspect('equal')
-    plt.colorbar(im0, ax=ax, label='Potential (V)')
+    if axes_in is None:
+        plt.suptitle(f'{title_label} field — {design_name}')
+        plt.tight_layout()
+        plt.savefig(out_path, dpi=150, bbox_inches='tight')
+        plt.close()
+        print(f"Saved: {out_path}")
 
-    ax = axes[1]
-    im1 = ax.pcolormesh(ctrl_x_mm, ctrl_z_mm, V3_ctrl[:, ix0, :].T,
-                        cmap='RdBu_r', shading='auto', vmin=vmin, vmax=vmax)
-    ax.set_xlim(xlim)
-    ax.set_ylim(zlim)
-    ax.set_xlabel('X (mm)')
-    ax.set_ylabel('Z (mm)')
-    ax.set_title(f'{design_name}: XZ slice at Y≈0')
-    ax.set_aspect('equal')
-    plt.colorbar(im1, ax=ax, label='Potential (V)')
 
-    plt.suptitle(f'{title_label} field — {design_name}')
+def plot_2d_slices(X, Y, Z, V, design_name, title_label, out_path, plot_region):
+    """Plot XY at Z=0 and XZ at Y=0 (convenience wrapper for plot_2d_cross_sections)."""
+    plot_2d_cross_sections(X, Y, Z, V, design_name, title_label, out_path, plot_region,
+                           planes=('XY', 'XZ'), offsets={'XY': 0, 'XZ': 0})
+
+
+def plot_axis_line(X, Y, Z, V, design_name, title_label, out_path, plot_region,
+                   axis='X', offsets=None, ax_in=None):
+    """Plot potential V along one axis at fixed offsets for the other two (control-system coords).
+    axis: 'X', 'Y', or 'Z' — axis to vary.
+    offsets: dict of fixed coordinates in mm, e.g. for axis='X': {'Y': 0, 'Z': 0}.
+             Missing keys default to 0.
+    ax_in: if provided, plot to this axis and skip create/save.
+    """
+    if offsets is None:
+        offsets = {}
+    x_vals = np.unique(X)
+    y_vals = np.unique(Y)
+    z_vals = np.unique(Z)
+    nx, ny, nz = len(x_vals), len(y_vals), len(z_vals)
+    V3 = V.reshape(nx, ny, nz)
+    V3_ctrl = np.transpose(V3, PERM_ANSYS_TO_CTRL)  # shape (ctrl_x, ctrl_y, ctrl_z)
+    ctrl_x_mm = z_vals * 1e3
+    ctrl_y_mm = x_vals * 1e3
+    ctrl_z_mm = y_vals * 1e3
+
+    def _idx(arr_mm, offset):
+        return np.argmin(np.abs(arr_mm - offset))
+
+    axis = axis.upper()
+    if axis == 'X':
+        iy = _idx(ctrl_y_mm, offsets.get('Y', 0))
+        iz = _idx(ctrl_z_mm, offsets.get('Z', 0))
+        pos_mm = ctrl_x_mm
+        line = V3_ctrl[:, iy, iz]
+        xlab = 'X (mm)'
+        title = f'{design_name}: along X at Y={ctrl_y_mm[iy]:.3f}, Z={ctrl_z_mm[iz]:.3f} mm'
+    elif axis == 'Y':
+        ix = _idx(ctrl_x_mm, offsets.get('X', 0))
+        iz = _idx(ctrl_z_mm, offsets.get('Z', 0))
+        pos_mm = ctrl_y_mm
+        line = V3_ctrl[ix, :, iz]
+        xlab = 'Y (mm)'
+        title = f'{design_name}: along Y at X={ctrl_x_mm[ix]:.3f}, Z={ctrl_z_mm[iz]:.3f} mm'
+    elif axis == 'Z':
+        ix = _idx(ctrl_x_mm, offsets.get('X', 0))
+        iy = _idx(ctrl_y_mm, offsets.get('Y', 0))
+        pos_mm = ctrl_z_mm
+        line = V3_ctrl[ix, iy, :]
+        xlab = 'Z (mm)'
+        title = f'{design_name}: along Z at X={ctrl_x_mm[ix]:.3f}, Y={ctrl_y_mm[iy]:.3f} mm'
+    else:
+        raise ValueError("axis must be 'X', 'Y', or 'Z'")
+
+    if ax_in is not None:
+        ax = ax_in
+    else:
+        fig, ax = plt.subplots(figsize=(8, 5))
+    ax.plot(pos_mm, line, 'b-', linewidth=1.5)
+    ax.set_xlim(plot_region[0], plot_region[1])
+    ax.set_xlabel(xlab)
+    ax.set_ylabel('Potential (V)')
+    ax.set_title(title)
+    ax.axhline(0, color='gray', linestyle='--', alpha=0.5)
+    ax.grid(True, alpha=0.3)
+    if ax_in is None:
+        plt.suptitle(f'{title_label} field — {design_name}', y=1.02)
+        plt.tight_layout()
+        plt.savefig(out_path, dpi=150, bbox_inches='tight')
+        plt.close()
+        print(f"Saved: {out_path}")
+
+
+def plot_six_panel(X, Y, Z, V, design_name, title_label, out_path, plot_region,
+                   offsets=None):
+    """Plot 6 panels on one figure: XY, XZ, YZ cross sections (row 0) and X, Y, Z axis lines (row 1).
+    All at zero offset by default. offsets: dict for cross-section and axis offsets (see plot_2d_cross_sections and plot_axis_line).
+    """
+    if offsets is None:
+        offsets = {}
+    cs_offsets = {p: offsets.get(p, 0.0) for p in ('XY', 'XZ', 'YZ')}
+    ax_offsets = {a: offsets.get(a, 0.0) for a in ('X', 'Y', 'Z')}
+
+    fig, axes = plt.subplots(2, 3, figsize=(15, 10))
+    plot_2d_cross_sections(X, Y, Z, V, design_name, title_label, None, plot_region,
+                           planes=('XY', 'XZ', 'YZ'), offsets=cs_offsets, axes_in=axes[0, :])
+    for col, axis in enumerate(('X', 'Y', 'Z')):
+        off = {'Y': ax_offsets['Y'], 'Z': ax_offsets['Z']} if axis == 'X' else \
+              {'X': ax_offsets['X'], 'Z': ax_offsets['Z']} if axis == 'Y' else \
+              {'X': ax_offsets['X'], 'Y': ax_offsets['Y']}
+        plot_axis_line(X, Y, Z, V, design_name, title_label, None, plot_region,
+                       axis=axis, offsets=off, ax_in=axes[1, col])
+    plt.suptitle(f'{title_label} field — {design_name}', fontsize=12)
     plt.tight_layout()
     plt.savefig(out_path, dpi=150, bbox_inches='tight')
     plt.close()

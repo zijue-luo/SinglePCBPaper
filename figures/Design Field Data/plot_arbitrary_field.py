@@ -9,7 +9,7 @@ import os
 from helper_functions import (
     ELECTRODES,
     compute_total_field,
-    plot_2d_slices,
+    plot_six_panel,
     plot_3d_contour,
 )
 
@@ -52,10 +52,10 @@ def main():
         return
 
     design_name = FLD_FOLDER
-    out_2d = os.path.join(design_dir, f'{OUTPUT_BASE}.png')
+    out_six = os.path.join(design_dir, f'{OUTPUT_BASE}.png')
     out_3d = os.path.join(design_dir, f'{OUTPUT_BASE}_3d.png')
 
-    plot_2d_slices(X, Y, Z, V, design_name, TITLE_LABEL, out_2d, PLOT_REGION)
+    plot_six_panel(X, Y, Z, V, design_name, TITLE_LABEL, out_six, PLOT_REGION)
     plot_3d_contour(X, Y, Z, V, design_name, TITLE_LABEL, out_3d, PLOT_REGION)
     print("Done.")
 

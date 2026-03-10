@@ -12,7 +12,7 @@ from helper_functions import (
     MULTIPOLES,
     compute_total_field,
     get_multipole_voltages,
-    plot_2d_slices,
+    plot_six_panel,
     plot_3d_contour,
     plot_comparison,
 )
@@ -49,9 +49,9 @@ def run_single(base, multipole, folders, plot_region):
         if X is None:
             print(f"  No .fld files in {design_dir}")
             continue
-        # Save in design folder (2D slices + 3D contour)
+        # Save in design folder (six-panel + 3D contour)
         out_path = os.path.join(design_dir, f'field_{multipole}.png')
-        plot_2d_slices(X, Y, Z, V, design, multipole, out_path, plot_region)
+        plot_six_panel(X, Y, Z, V, design, multipole, out_path, plot_region)
         out_3d = os.path.join(design_dir, f'field_{multipole}_3d.png')
         plot_3d_contour(X, Y, Z, V, design, multipole, out_3d, plot_region)
 
@@ -81,7 +81,7 @@ def run_hybrid(base, cfile_folder, fld_folder, output_folder, multipole, plot_re
 
     design_name = f"Cfile:{cfile_folder}, fld:{fld_folder}"
     out_path = os.path.join(out_dir, f'field_{multipole}.png')
-    plot_2d_slices(X, Y, Z, V, design_name, multipole, out_path, plot_region)
+    plot_six_panel(X, Y, Z, V, design_name, multipole, out_path, plot_region)
     out_3d = os.path.join(out_dir, f'field_{multipole}_3d.png')
     plot_3d_contour(X, Y, Z, V, design_name, multipole, out_3d, plot_region)
 

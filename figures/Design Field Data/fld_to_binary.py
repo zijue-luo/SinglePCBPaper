@@ -12,6 +12,11 @@ from helper_functions import load_fld
 FLDB_MAGIC = b'FLDB'
 FLDB_VERSION = 1
 
+# ============== Config at top ==============
+# Folders (relative to script dir) to convert
+FOLDERS = ['DC_in_use', 'DC_w_shielding']
+# ==========================================
+
 
 def write_fld_binary(fldb_path, X, Y, Z, V):
     """Write (X, Y, Z, V) to binary .fldb file."""
@@ -55,12 +60,6 @@ def convert_folder(folder_path):
                 count += 1
                 print(f"  {name} -> {name[:-4]}.fldb")
     return count
-
-
-# ============== Config at top ==============
-# Folders (relative to script dir) to convert
-FOLDERS = ['DC_in_use', 'DC_w_shielding']
-# ==========================================
 
 
 def main():
