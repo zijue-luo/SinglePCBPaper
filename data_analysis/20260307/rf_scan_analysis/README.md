@@ -2,6 +2,21 @@
 
 Ion trap tickling experiment RF scan analysis: Gaussian peak fitting for ratio_signal (trapped) and ratio_lost; outputs peak center (mu), amplitude, sigma, etc.
 
+## Folder Structure
+
+```
+rf_scan_analysis/
+├── notebooks/          # Jupyter notebooks (data_cleaning, generate_final_plot, fit_and_generate_final_plot)
+├── data/               # Processed CSVs (df_lost_final.csv, df_trapped_final.csv)
+├── outputs/            # Generated plots
+│   ├── fitting_plots/
+│   ├── filter_check_plots/
+│   ├── group_check_plots/
+│   └── intensity_prominence_tune_plots/
+├── research/           # Experimental scripts
+└── *.py                # Core modules
+```
+
 ## Data Layout
 
 - Root: `data_rf/` (relative to script parent)

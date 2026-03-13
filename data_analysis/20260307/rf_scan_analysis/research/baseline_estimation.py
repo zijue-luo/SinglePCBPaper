@@ -252,7 +252,7 @@ def baseline_excluding_peaks(x, y, mode, peak_mus_sigmas, exclude_n_sigma=5.0):
 
 def main():
     data_root = os.path.join(PROJECT_ROOT, "data_rf")
-    csv_path = os.path.join(RF_SCAN_DIR, "final_analysis_plots", "run_best_models_averaged_20260227_201811.csv")
+    csv_path = os.path.join(RF_SCAN_DIR, "outputs", "fitting_plots", "run_best_models_averaged_20260227_201811.csv")
     known_peaks = load_known_peaks_from_csv(csv_path)
 
     groups, _, _ = build_tickling_groups()

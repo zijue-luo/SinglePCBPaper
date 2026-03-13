@@ -13,7 +13,7 @@ SCAN_COUNT = 120       # initial mu scan points when adding a new peak
 MAX_N_PEAKS = 9
 MAX_NFEV = 4000
 N_JOBS = 8
-FINAL_ANALYSIS_OUTPUT_DIR = "final_analysis_plots"
+FINAL_ANALYSIS_OUTPUT_DIR = "outputs/fitting_plots"
 RUN_AVERAGED_PHASE = True
 
 # RF value source: setpoint = JSON config, act = act_RF_amplitude file
